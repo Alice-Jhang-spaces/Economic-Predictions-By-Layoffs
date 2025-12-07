@@ -1,26 +1,71 @@
-# Economic-Predictions-By-Layoffs
-1. Problem Statement
-The goal of this project is to predict daily financial market movements, specifically whether the S&P 500 (SP5_Up), Dow Jones (DJ_Up), or VIX volatility index (VIX_Up) will increase based on layoffs and company-level attributes. This explores whether layoff activity, industry, geographic location, and timing provide predictive signals for short-term market direction.
-2. Data
-The dataset combines four sources:
-• Global Layoff Dataset (company, industry, location, stage, layoffs %, country)
-• S&P 500 daily prices (SP5)
-• Dow Jones daily prices (DJIA)
-• VIX (Volatility Index)
-Binary targets:
-• SP5_Up = 1 if today’s S&P 500 > yesterday  
-• DJ_Up = 1 if Dow Jones > yesterday  
-• VIX_Up = 1 if VIX increased  
-3. Model
-A Decision Tree Classifier was selected because it handles mixed data types and provides interpretability.
-Pipeline included:
-• ColumnTransformer (numeric passthrough + OneHotEncoder)  
-• DecisionTreeClassifier(max_depth=6)  
-Train-test split: 80/20  
-Separate models were trained for SP5_Up, DJ_Up, and VIX_Up.
-4. Results
-SP5_Up:
-• Accuracy: 0.8762  
-• Top features: Month, Year, Finance/Travel industries, locations (Seattle, SF Bay Area)
-VIX_Up:
-• Accuracy: 0.8889  
+Economic Trend Prediction Using Layoff Data + Stock Market Indicators
+Predicting SP500, Dow Jones, and VIX Daily Direction Using Machine Learning (2020–2023)
+1. Project Overview
+This project builds a machine-learning system that predicts daily economic direction:
+SP500 Up / Down
+Dow Jones Up / Down
+VIX Index Up / Down
+using combined datasets of:
+U.S. layoff events (company, industry, location, % laid off)
+S&P500 historical values
+Dow Jones Industrial Average
+VIX fear index
+The goal is to explore whether tech layoffs and company-level economic stress signals can predict short-term market movements.
+2. Dataset Description
+This project requires four CSV inputs (10 years each, filtered to 2020–2023):
+Dataset	Description
+layoffs.csv	Company layoff events: percentage laid off, industry, location, etc.
+s_p.csv / sp500.csv	Daily S&P500 closing values
+dow.csv	Daily Dow Jones index values
+vix.csv	Daily VIX index (fear index)
+All files must be stored in the same folder as the main script.
+3. Data Cleaning & Preprocessing
+The script performs:
+✔ Date filtering
+Only keeps data between 2020-03-11 → 2023-03-06, matching the availability of layoff reports.
+✔ Merging data
+All datasets are merged into one master table on the Date field:
+LAYOFFS + SP500 + DOW + VIX
+✔ Missing data removal
+Rows without percentage_laid_off are removed.
+✔ Feature engineering
+Four new features are created:
+A. Risk Category (Target for analysis)
+-1 → Low Risk (< 4%)
+ 1 → High Risk (4–8%)
+ 3 → Extreme Risk (> 8%)
+B. Layoff Index (Custom Categorical Signal)
+Used by the ML model.
+C. Economic direction labels
+SP5_Up = 1 if today's SP500 > yesterday
+DJ_Up  = 1 if today's Dow > yesterday
+VIX_Up = 1 if today's VIX > yesterday
+D. Time signals
+year, month, day
+These help the model learn seasonal patterns.
+4. Machine Learning Model
+The project uses:
+DecisionTreeClassifier (max_depth=6)
+This model performs well on mixed numerical and categorical datasets.
+Preprocessing Pipeline
+Numerical features → passthrough
+Categorical features → One-Hot Encoding
+Using ColumnTransformer ensures clean, consistent preprocessing.
+5. Training Function
+The function:
+train_and_plot(df, target_name)
+trains a model for any target:
+SP5_Up
+DJ_Up
+VIX_Up
+It automatically generates:
+✔ Accuracy score
+✔ Confusion matrix PNG
+✔ Feature importance chart PNG
+✔ Prediction vs Actual plot
+✔ Probability distribution plot
+
+remember to setup your own output file path to save all images
+How to Run the Project
+Step 1 — Place all CSV files in the same folder as your Python script
+Step 2 — Run the script
