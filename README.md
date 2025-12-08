@@ -1,6 +1,6 @@
-Economic Trend Prediction Using Layoff Data + Stock Market Indicators
-Predicting SP500, Dow Jones, and VIX Daily Direction Using Machine Learning (2020–2023)
-1. Project Overview
+#Economic Trend Prediction Using Layoff Data + Stock Market Indicators
+#Predicting SP500, Dow Jones, and VIX Daily Direction Using Machine Learning (2020–2023)
+#1. Project Overview
 This project builds a machine-learning system that predicts daily economic direction:
 SP500 Up / Down
 Dow Jones Up / Down
@@ -11,7 +11,7 @@ S&P500 historical values
 Dow Jones Industrial Average
 VIX fear index
 The goal is to explore whether tech layoffs and company-level economic stress signals can predict short-term market movements.
-2. Dataset Description
+#2. Dataset Description
 This project requires four CSV inputs (10 years each, filtered to 2020–2023):
 Dataset	Description
 layoffs.csv	Company layoff events: percentage laid off, industry, location, etc.
@@ -19,7 +19,7 @@ s_p.csv / sp500.csv	Daily S&P500 closing values
 dow.csv	Daily Dow Jones index values
 vix.csv	Daily VIX index (fear index)
 All files must be stored in the same folder as the main script.
-3. Data Cleaning & Preprocessing
+#3. Data Cleaning & Preprocessing
 The script performs:
 ✔ Date filtering
 Only keeps data between 2020-03-11 → 2023-03-06, matching the availability of layoff reports.
@@ -65,7 +65,7 @@ It automatically generates:
 ✔ Prediction vs Actual plot
 ✔ Probability distribution plot
 
-remember to setup your own output file path to save all images
+# Remember to setup your own output file path to save all images
 How to Run the Project
 Step 1 — Place all CSV files in the same folder as your Python script
 Step 2 — Run the script
