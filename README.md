@@ -1,4 +1,4 @@
-# 📈 Economic Trend Prediction Using Layoff Data & Stock Market Indicators  
+#  Economic Trend Prediction Using Layoff Data & Stock Market Indicators  
 ### **Predicting S&P 500, Dow Jones, and VIX Daily Direction (2020–2023)**
 
 This project builds a machine-learning pipeline to predict daily economic direction for major U.S. market indexes:
@@ -11,7 +11,7 @@ The model uses combined datasets that include **company layoffs**, **stock index
 
 ---
 
-## ⭐ 1. Project Overview
+##  1. Project Overview
 This project investigates whether layoffs and company-level stress signals can help predict short-term market movements.
 
 ### ✔ Data Sources
@@ -29,7 +29,7 @@ This project investigates whether layoffs and company-level stress signals can h
 
 ---
 
-## 📊 2. Dataset Description
+##  2. Dataset Description
 
 This project requires **four CSV files**, stored in the same directory as the script.
 
@@ -45,7 +45,7 @@ All files are filtered to:
 
 ---
 
-## 🛠️ 3. Data Cleaning & Preprocessing
+##  3. Data Cleaning & Preprocessing
 
 ### ✔ Date Range Filtering  
 Keeps only rows between **March 2020 – March 2023**.
@@ -59,7 +59,7 @@ Removes rows lacking `percentage_laid_off`.
 
 ---
 
-## 🧩 4. Feature Engineering
+##  4. Feature Engineering
 
 ### **A. Risk Category**
 Generated based on percentage laid off:
@@ -89,7 +89,7 @@ Used for seasonality learning.
 
 ---
 
-## 🤖 5. Machine Learning Model
+##  5. Machine Learning Model
 
 ### Model Used  
 `DecisionTreeClassifier(max_depth=6)`
